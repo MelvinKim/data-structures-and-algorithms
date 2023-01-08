@@ -90,6 +90,9 @@ min = float("-inf")
 
 
 # ARRAYS (called lists in Python)
+"""
+list comprehension -> sort of an advanced way to initialize lists using a for loop
+"""
 nums = [1, 2, 4]
 # common operations
 nums.append(5)  # add an element to the end of the array
@@ -193,6 +196,10 @@ print("".join(strings))  # prints "abcdef"
 
 
 # Queues (double ended queue)
+"""
+allow popping from the left and right
+allow appending at the right and left
+"""
 queue = deque()
 queue.append(1)
 queue.append(2)
@@ -206,13 +213,22 @@ queue.pop()
 
 
 # Hashset
-# we can search in O(1) Time, insert in O(1) Time
+"""
+we can search in O(1) Time, insert in O(1) Time, remove values in 0(1) Time
+does not allow duplicates
+NB:
+list = append() , set = add()
+list = [], set = {}
+
+set comprehension --> (just a fancy way of initializing a set)
+set comprehension vs list comprehension vs dictionary comprehension
+"""
 mySet = set()
 mySet.add(1)
 mySet.add(2)
-# len of a set
+# length of a hashset
 n = len(mySet)
-# check in element exists in the hashSet
+# check if element exists in the hashSet
 containsOne = 1 in mySet
 containsTwo = 2 in mySet
 containsThree = 3 in mySet
@@ -225,6 +241,13 @@ mySet = {i for i in range(5)}  # {0,1,2,3,4}
 
 
 # hashMap aka dictionary : Can't have duplicate keys
+"""
+length of a hashmap, returns the number of keys in the map
+myMap.values() --> returns the values in a hashmap
+myMap.items() --> returns the key and values of a hashmap (key, value)
+
+dict comprehension --> just a fancy way of initializing a dictionary
+"""
 myMap = {}
 myMap["alice"] = 88
 myMap["melvin"] = 95
@@ -253,8 +276,13 @@ for key, val in myMap.items():
     print(key, val)
 
 
-# Tuples are like arrays but IMMUTABLE
-# - To initialize tuples, we use paranthesis rather than brackets eg tup = (1,2,3)
+# Tuples
+"""
+Tuples are likes arrays, but they are IMMUTABLE
+lists = [], tuples = ()
+
+To initialize tuples, we use paranthesis rather than brackets eg tup = (1,2,3)
+"""
 tup = (1, 2, 3)
 num1 = tup[0]
 num2 = tup[2]
