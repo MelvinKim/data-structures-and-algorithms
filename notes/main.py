@@ -281,8 +281,8 @@ for key, val in myMap.items():
 Tuples are likes arrays, but they are IMMUTABLE
 lists = [], tuples = ()
 
-Mainly used as keys for hashmaps or hashsets 
-eg myMap = {(1,2): 3, (4,5): 9, (8,8): 16}
+Mainly used as keys for hashmaps or hashsets --> lists aren't hashable and can't be keys eg myMap[[1,2]] = 5 --> cant't work
+eg myMap = {(1,2): 3, (4,5): 9, (8,8): 16} --> using a tuple as key
 
 To initialize tuples, we use paranthesis rather than brackets eg tup = (1,2,3)
 You can't modify a tuple 
@@ -290,28 +290,32 @@ You can't modify a tuple
 tup = (1, 2, 3)
 num1 = tup[0]
 num2 = tup[2]
-# can't modify tuples i.e tup[0] = 2
-# MAINLY used as keys for hashmaps or hashSets
-# we do this, because lists aren't hashable and can't be keys eg myMap[[1,2]] = 5 --> cant't work
 myMap = {(1, 2): 3}
 
 
 # Heaps
-# - used mainly for min and max problems
-# - under the hood, they are basically arrays
-# - by default, heaps in python are minHeaps
-# - for minHeaps, the minimum value, will always be at index 0
+"""
+- used mainly for min and max problems
+- under the hood, they are basically arrays
+- by default, heaps in python are minHeaps
+- for minHeaps, the minimum value, will always be at index 0
+
+- python, does not have max heaps by default
+- the workaround is to use min heaps and multiply by -1, 
+- when we push and pop
+- for maxHeaps, the maximum value will always be at index 0
+
+- heapify: building a heap from an intial set of values(list of values)
+"""
 minHeap = []
 heapq.heappush(minHeap, 3)
 heapq.heappush(minHeap, 2)
 heapq.heappush(minHeap, 4)
+minVal = minHeap[0] # will always be at index 0
 # loop through
 while len(minHeap):
     print(heapq.heappop(minHeap))
-# - python, does not have max heaps by default
-# - the workaround is to use min heaps and multiply by -1
-# - when we push & pop
-# - for maxHeaps, the maximum value will always be at index 0
+# python, does not have max heaps by default
 maxHeap = []
 heapq.heappush(maxHeap, -3)
 heapq.heappush(maxHeap, -2)
@@ -332,10 +336,11 @@ while arr:
 def addNum(x, y):
     return x + y
 
-# nested functions
-# - used alot expecially for recurssive problems
-
-
+"""
+- nested functions
+- used alot expecially for recurssive problems
+- nested functions have access to outer variables
+"""
 def outer(a, b):
     c = "c"
 
@@ -343,8 +348,34 @@ def outer(a, b):
         return a + b + c
     return inner()
 
+"""
+You cam modify objects but not reassign
+unless using "nonlocal" keyword
+"""
+def double(arr, val):
+    def helper():
+        # modifying array works
+        for i, n in enumerate(arr):
+            arr[i] *= 2
+            
+        # will only modify value in the helper scope
+        # val *= 2
+        
+        # this will modify val outside helper scope
+        nonlocal val
+        val *= 2
+    helper()
+    print(arr, val)
+    
+nums = [1,2]
+val = 3
+double(nums, val)
 
 # Classes
+"""
+- "self" is passed to every method of a class
+- it's like the this keyword in other languages
+"""
 class MyClass:
     # Constructor
     def __init__(self, nums):
