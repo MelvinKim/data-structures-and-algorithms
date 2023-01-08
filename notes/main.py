@@ -1,23 +1,23 @@
-# this is okay
 import heapq
 from collections import deque
 import math
+
 n = 0
 print("n = ", n)
-
-n = "abc"
+n = "abc" # types are determined at runtime, re-assigning of variables is allowed
 print("n again = ", n)
 
 # multiple assignments
 n, m = 0, "abc"
 n, m, z = 0, "abc", False
 
-# incrementing a variabl
+# incrementing a variable
 n = n + 1  # we can't do this: n++
 n += 1
 
-# Null value = none
-# n = None
+# Null value = None --> indicates absence of a value
+# n = 4
+# n = None --> re-assigning
 
 if n > 2:
     print("n is greater than 2")
@@ -53,6 +53,7 @@ for i in range(6, 3, -2):
     print("i in reverse order = ", i)  # prints from 6 - 2
 
 # division is decimal division by default
+# most other languages use integer division
 print(5 / 2)  # prints 2.5
 print(10 / 3)  # prints 3.333333
 
@@ -64,7 +65,7 @@ print(int(-3 / 2))  # prints -1
 # modulus operator
 print(10 % 3)  # prints 1
 # NB, be careful when dealing with negative numbers
-print(-10 % 3)  # prints -2
+print(-10 % 3)  # prints 2
 # To get a correct value, when dealing with negative numbers, do this instead
 print(math.fmod(-10, 3))  # prints -1
 
@@ -88,32 +89,51 @@ min = float("-inf")
 # - Python numbers are infinite, so they never overflow
 
 
-# ARRAYS (list)
+# ARRAYS (called lists in Python)
 nums = [1, 2, 4]
 # common operations
 nums.append(5)  # add an element to the end of the array
 nums.pop()  # removes from the end of the list , prints last element in the list
 nums.insert(1, 7)  # takes O(N) Time
-# reading and re-assigning values
+# reading values
+idx = nums[0]
+# reassigning values
 nums[0] = 0  # O(1) Time
+nums[3] = 45
+nums[1] = 78
 # initializing an array of a specific size
 n = 5
 arr = [1] * n
+
+count = 100
+cars = ["Benz"] * count
+carsCount = len(cars)
 # reading last value of an array
 lastElem = nums[-1]
+lastCar = cars[-1]
 # reading second last element
 secondLastElem = nums[-2]
+secondLastCar = nums[-2]
+# reading third last element
+thirdLastElem = nums[-3]
+thirdLastCar = cars[-3]
 # getting sublists (slicing an array)
 arr = nums[1:3]  # end index is exclusive
 newArr = nums[0:4]
+newCars = cars[0:] # from first to last element
+firstCars = cars[:carsCount] # from first car to the last car
+secondBunchCars = cars[:3] # from first car to the car at index 2
 # unpacking an array
 a, b, c = [1, 2, 3]
+firstCar, secondCar, thirdCar = ["Mazda Axela", "Mercedes Benz C200", "SUV"]
 # looping througn an array
 for i in range(len(nums)):
     print("element at index {} is {}".format(i, nums[i]))
 for n in nums:
     print(n)
 for i, n in enumerate(nums):  # getting access to the index and the value
+    print(i, n)
+for i, dreamCar in enumerate(cars):
     print(i, n)
 # looping through multiple arrays simultaneously, with unpacking
 # enables us to print the numbers in pairs eg [1,2] [3,4] [5,6]
@@ -124,31 +144,35 @@ for n1, n2 in zip(nums1, nums2):
 # reverse an array
 nums = [1, 2, 3]
 nums.reverse()
+dreamCars = ["Mazda Axela", "Mercedes benz C200", "SUV"]
+dreamCars.reverse()
 # sorting an array
 nums = [5, 4, 7, 3, 8]
 nums.sort()  # in ascending order
 nums.sort(reverse=True)  # in descending order
+dreamCars.sort() # sorts them in ascending order
+dreamCars.sort(reverse=True) # sorts them in descending order
 # sorting a list of strings based on alphabetical order
 arr = ["bob", "alice", "jane", "doe"]
 arr.sort()
 # implementing a custom sort eg based on the length
 arr.sort(key=lambda x: len(x))
-# list comprehension -> sort of an advanced way to initialize lists
-arr = [i for i in range(5)]
-arr = [i+1 for i in range(5)]
-arr = [i*2 for i in range(5)]
+dreamCars.sort(key=lambda x: len(x))
+# list comprehension -> sort of an advanced way to initialize lists using a for loop
+arr = [i for i in range(5)] # for each i, we are going to add it to the list
+arr = [i+1 for i in range(5)] # for each i+1, we are going to add it to the list
+arr = [i*2 for i in range(5)] # for each i*2, we are going to add it to the list
 # list comprehension for 2D lists
-# prints [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
-arr = [[0] * 4 for i in range(4)]
-# prints [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]
-arr = [[1] * 2 for i in range(5)]
+arr = [[0] * 4 for i in range(4)] # prints [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+arr = [[1] * 2 for i in range(5)] # prints [[1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]
+arr = [[i] * 4 for i in range(4)] # prints [[0,0,0,0], [1,1,1,1], [2,2,2,2], [3,3,3,3]]
 
 
 # STRINGS --> quite similar to arrays
 s = "abc"
 # slicing
 str = s[0:2]
-# strings are immutable --> You can't do this
+# strings are immutable --> You can't do this --> You can't modify a string
 s[0] = "A"
 # updating a string --> creates a new string --> basically combining new strings to form a new one --> add to the end of the string
 # modifying a string is an O(N) Time operation
@@ -163,6 +187,9 @@ print(ord("b"))
 # combining a list of strings, (with an empty string delimitor)
 strings = ["ab", "cd", "ef"]
 print("".join(strings))  # prints "abcdef"
+# NB
+# split() --> used to create a new array using the words in a string, you must specify the deliminiter
+# join() --> used to form a string from a given array, you must specify the deliminiter
 
 
 # Queues (double ended queue)
