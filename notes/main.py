@@ -281,13 +281,16 @@ for key, val in myMap.items():
 Tuples are likes arrays, but they are IMMUTABLE
 lists = [], tuples = ()
 
+Mainly used as keys for hashmaps or hashsets 
+eg myMap = {(1,2): 3, (4,5): 9, (8,8): 16}
+
 To initialize tuples, we use paranthesis rather than brackets eg tup = (1,2,3)
+You can't modify a tuple 
 """
 tup = (1, 2, 3)
 num1 = tup[0]
 num2 = tup[2]
-# can't modify tuples
-tup[0] = 0
+# can't modify tuples i.e tup[0] = 2
 # MAINLY used as keys for hashmaps or hashSets
 # we do this, because lists aren't hashable and can't be keys eg myMap[[1,2]] = 5 --> cant't work
 myMap = {(1, 2): 3}
