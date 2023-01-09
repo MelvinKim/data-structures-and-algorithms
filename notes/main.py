@@ -1,5 +1,6 @@
 import heapq
 from collections import deque
+import itertools
 import math
 
 n = 0
@@ -441,7 +442,13 @@ while True:
         break
     
     
-
+# Generator
+# 1.
+def printNumbers(nums):
+    for i in nums:
+        yield i
+# 2. generator exception
+squares = (x**2 for x in itertools.count(1))
 
 """ 
 NB:
