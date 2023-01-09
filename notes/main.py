@@ -391,6 +391,58 @@ class MyClass:
         return 2 * self.getLength()
 
 
+# Iterators, iterables, itertools
+"""
+- what makes an object iterable ? --> 
+container.__iter__()
+    Returns an iterator object
+iterator.__next__()
+    Returns the next item from iterable container
+    if there are no further items,the "StopIteration" exception is raised
+"""
+# lists
+codes = ['cx32', 'gsof', 'Emily']
+for element in codes:
+    print(element)
+# tuple
+people = ('Jose', 'Boh', 'Rusti')
+for element in people:
+    print(element)
+# strings
+str = 'socratica'
+for letter in str:
+    print(letter)
+# bytes
+for byte in b'Binary':
+    print(byte)
+# digits
+digits = 4464646466282
+for d in str(digits):
+    print(int(d))
+    
+# using __iter__() and __next__()
+usernames = ('Rainer', 'Alfons')
+looper1 = usernames.__iter__()
+print(type(looper1)) # prints <class 'tuple_iterator'>
+looper1.__next__() # Rainer
+looper1.__next__() # Alfons
+# a better way of creating an iterator and getting the next element
+looper2 = iter(usernames)
+next(looper2)
+next(looper2)
+#  looping using iter: looping without using a for loop
+dreamCars = ["Mazda Axela", "Mercedes Benz C200", "SUV"]
+looper = iter(dreamCars)
+while True:
+    try:
+        user = next(looper)
+        print(user)
+    except StopIteration:
+        break
+    
+    
+
+
 """ 
 NB:
 - Range always starts at 0 i.e
