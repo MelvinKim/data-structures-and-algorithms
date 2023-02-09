@@ -10,6 +10,16 @@ def containsDuplicate(nums):
             return True
     return False
 
+def containsDuplicateUsingHashset(nums):
+    hashset = set()
+    
+    for n in nums:
+        if n  in hashset:
+            return True
+        hashset.add(n)
+        
+    return False
+
 
 print(containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]))
 # use a map

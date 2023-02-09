@@ -1,3 +1,7 @@
+""" 
+O(n * log n) Time
+O(1) Space
+"""
 def isAnagram(s, t):
     if s == None or t == None:
         return False
@@ -11,9 +15,40 @@ def isAnagram(s, t):
     if s == t:
         return True
     return False
+"""
+O(s + t) Time
+s = length of s
+t = length of t
+O(s + t) Space
+s = length of s
+t = length of t
+"""
+def validAnagramNeetCodeSolution(s, t):
+    if len(s) != len(t):
+        return False
+    
+    countS = {}
+    countT = {}
+    
+    for i in range(len(s)):
+        countS[s[i]] = 1 + countS.get(s[i], 0)
+        countT[t[i]] = 1 + countT.get(t[i], 0)
+    # make sure the character counts are the same
+    for c in countS:
+        if countS[c] != countT.get(c, 0):
+            return False
+    
+    return True
 
-
-def isAnagramUsingMap(s, t):
+"""
+O(s + t) Time
+s = length of s
+t = length of t
+O(s + t) Space
+s = length of s
+t = length of t
+"""
+def isAnagramUsingMapMySolution(s, t):
     if s == None or t == None:
         return False
     if len(s) != len(t):
@@ -37,4 +72,4 @@ def isAnagramUsingMap(s, t):
     return True
 
 
-print(isAnagramUsingMap("anagram", "nagaram"))
+print(isAnagramUsingMapMySolution("anagram", "nagaram"))
