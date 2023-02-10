@@ -72,4 +72,4 @@ def isAnagramUsingMapMySolution(s, t):
     return True
 
 
-print(isAnagramUsingMapMySolution("anagram", "nagaram"))
+print(validAnagramNeetCodeSolution("anagram", "nagaram"))
