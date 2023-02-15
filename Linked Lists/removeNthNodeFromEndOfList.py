@@ -24,3 +24,27 @@ class Solution(object):
         slow.next = slow.next.next
         
         return dummy_node.next
+    
+    def removeNthNodeFromEndBruteForce(self, head, n):
+        if not head:
+            return head
+        
+        dummy_node = ListNode(val=0)
+        dummy_node.next = head
+        current_node = dummy_node
+        
+        # find the number of nodes
+        count_head = head 
+        count = 0
+        while count_head:
+            count += 1
+            count_head = count_head.next
+            
+        val = count - n 
+        while val > 0:
+            current_node = current_node.next
+            val -= 1
+        
+        temp_node = current_node.next.next
+        current_node.next = temp_node
+        return dummy_node.next

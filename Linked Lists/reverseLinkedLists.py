@@ -23,10 +23,10 @@ class Solution(object):
                 
         return temp_head
                 
-    
-    # optimal
-    # O(N) Time complexity
-    # O(1) Space complexity
+    """
+    O(N) Time complexity
+    O(1) Space complexity
+    """
     def reverseListIterativeOptimal(self, head):
         if head == None:
             return head
@@ -34,7 +34,7 @@ class Solution(object):
         prev = None
         current = head
         
-        while(current != None):
+        while current:
             next = current.next # to enable us keep track of the next node, since we are breaking that link
             current.next = prev
             prev = current
@@ -42,8 +42,11 @@ class Solution(object):
                
         return prev
     
-    # 0(N) Time complexity
-    # O(N) Space complexity
+    """
+    0(N) Time complexity
+    O(N) Space complexity
+    - TODO:  go through this again :)
+    """
     def reverseListRecursiveOptimal(self, head):
         # base case --> if head == null (None)
         if not head:
